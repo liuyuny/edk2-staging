@@ -2,6 +2,7 @@
 
   Definitions for the Platform Runtime Mechanism (PRM) export descriptor structures.
 
+  Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
   Copyright (c) Microsoft Corporation
   SPDX-License-Identifier: BSD-2-Clause-Patent
 
@@ -30,6 +31,7 @@ typedef struct {
   UINT64                                Signature;
   UINT16                                Revision;
   UINT16                                NumberPrmHandlers;
+  GUID                                  PlatformGuid;
   GUID                                  ModuleGuid;
 } PRM_MODULE_EXPORT_DESCRIPTOR_STRUCT_HEADER;
 
@@ -85,7 +87,7 @@ typedef struct {
                                     this module.
 
 **/
-#define PRM_MODULE_EXPORT(...)                                                                            \
+#define PRM_MODULE_EXPORT(PlatformGuid, ...)                                                                            \
   PRM_PACKED_STRUCT(                                                                                      \
     {                                                                                                     \
       PRM_MODULE_EXPORT_DESCRIPTOR_STRUCT_HEADER  Header;                                                 \
@@ -97,6 +99,7 @@ typedef struct {
     PRM_MODULE_EXPORT_DESCRIPTOR_SIGNATURE,                                                               \
     PRM_MODULE_EXPORT_REVISION,                                                                           \
     VA_ARG_COUNT(__VA_ARGS__),                                                                            \
+    PlatformGuid,                                                                                         \
     EFI_CALLER_ID_GUID,                                                                                   \
     { __VA_ARGS__ }                                                                                       \
   }                                                                                                       \

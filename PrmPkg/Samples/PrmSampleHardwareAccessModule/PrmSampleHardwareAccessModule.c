@@ -3,6 +3,7 @@
   A sample PRM Module implementation. This PRM Module provides PRM handlers that perform various types
   of hardware access. This is simply meant to demonstrate hardware access capabilities from a PRM handler.
 
+  Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
   Copyright (c) Microsoft Corporation
   SPDX-License-Identifier: BSD-2-Clause-Patent
 
@@ -19,6 +20,9 @@
 #include <Register/Intel/Cpuid.h>
 
 #include "Hpet.h"
+
+// PRM Platform GUID
+#define PLATFORM_GUID {0x00000000, 0x0000, 0x0000, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
 
 //
 // PRM Handler GUIDs
@@ -618,6 +622,7 @@ PRM_HANDLER_EXPORT (MmioPrintHpetPrmHandler)
 // Register the PRM export information for this PRM Module
 //
 PRM_MODULE_EXPORT (
+  PLATFORM_GUID,
   PRM_HANDLER_EXPORT_ENTRY (MSR_ACCESS_MICROCODE_SIGNATURE_PRM_HANDLER_GUID, MsrAccessMicrocodeSignaturePrmHandler),
   PRM_HANDLER_EXPORT_ENTRY (MSR_ACCESS_MTRR_DUMP_PRM_HANDLER_GUID, MsrAccessMtrrDumpPrmHandler),
   PRM_HANDLER_EXPORT_ENTRY (MMIO_ACCESS_HPET_PRM_HANDLER_GUID, MmioAccessHpetPrmHandler),

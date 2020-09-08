@@ -3,6 +3,7 @@
   A sample PRM Module implementation. This PRM Module provides 3 PRM handlers that simply take a DEBUG print
   function from the OS and invoke it with a debug message internal the PRM handler.
 
+  Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
   Copyright (c) Microsoft Corporation
   SPDX-License-Identifier: BSD-2-Clause-Patent
 
@@ -12,6 +13,9 @@
 
 #include <Library/BaseLib.h>
 #include <Library/UefiLib.h>
+
+// PRM Platform GUID
+#define PLATFORM_GUID {0x00000000, 0x0000, 0x0000, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
 
 //
 // PRM Handler GUIDs
@@ -141,6 +145,7 @@ PrmHandlerN (
 // Register the PRM export information for this PRM Module
 //
 PRM_MODULE_EXPORT (
+  PLATFORM_GUID,
   PRM_HANDLER_EXPORT_ENTRY (PRM_HANDLER_1_GUID, PrmHandler1),
   PRM_HANDLER_EXPORT_ENTRY (PRM_HANDLER_2_GUID, PrmHandler2),
   PRM_HANDLER_EXPORT_ENTRY (PRM_HANDLER_N_GUID, PrmHandlerN)

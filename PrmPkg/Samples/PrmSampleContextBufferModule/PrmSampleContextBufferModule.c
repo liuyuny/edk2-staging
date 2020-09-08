@@ -17,6 +17,9 @@
 
 #include <Samples/PrmSampleContextBufferModule/Include/StaticData.h>
 
+// PRM Platform GUID
+#define PLATFORM_GUID {0x00000000, 0x0000, 0x0000, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
+
 //
 // PRM Handler GUIDs
 //
@@ -62,6 +65,7 @@ PRM_HANDLER_EXPORT (CheckStaticDataBufferPrmHandler)
 // Register the PRM export information for this PRM Module
 //
 PRM_MODULE_EXPORT (
+  PLATFORM_GUID,
   PRM_HANDLER_EXPORT_ENTRY (CHECK_STATIC_DATA_BUFFER_PRM_HANDLER_GUID, CheckStaticDataBufferPrmHandler)
   );
 

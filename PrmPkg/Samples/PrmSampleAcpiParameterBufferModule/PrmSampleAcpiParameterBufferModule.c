@@ -2,6 +2,7 @@
 
   This PRM Module demonstrates how to define an ACPI parameter buffer that is used by a PRM handler.
 
+  Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
   Copyright (c) Microsoft Corporation
   SPDX-License-Identifier: BSD-2-Clause-Patent
 
@@ -16,6 +17,9 @@
 #include <Library/DebugLib.h>
 
 #define PARAM_BUFFER_TEST_SIGNATURE         SIGNATURE_32('T','E','S','T')
+
+// PRM Platform GUID
+#define PLATFORM_GUID {0x00000000, 0x0000, 0x0000, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
 
 //
 // PRM Handler GUIDs
@@ -56,6 +60,7 @@ PRM_HANDLER_EXPORT (CheckParamBufferPrmHandler)
 // Register the PRM export information for this PRM Module
 //
 PRM_MODULE_EXPORT (
+  PLATFORM_GUID,
   PRM_HANDLER_EXPORT_ENTRY (CHECK_PARAM_BUFFER_PRM_HANDLER_GUID, CheckParamBufferPrmHandler)
   );
 
