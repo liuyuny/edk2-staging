@@ -3,6 +3,7 @@
   This PRM Module demonstrates how to configure the module data resources in the firmware boot environment
   and access those resources in a PRM handler at OS runtime.
 
+  Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
   Copyright (c) Microsoft Corporation
   SPDX-License-Identifier: BSD-2-Clause-Patent
 
@@ -37,7 +38,7 @@
 **/
 PRM_HANDLER_EXPORT (CheckStaticDataBufferPrmHandler)
 {
-  if (ContextBuffer == NULL) {
+  if (ContextBuffer == NULL || ParameterBuffer == NULL) {
     return EFI_INVALID_PARAMETER;
   }
 
